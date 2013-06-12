@@ -1,3 +1,4 @@
+
 (function($){
 	$.fn.kscroller = function(settings){
 		var plugin = new $.kscroller(this, settings);
@@ -15,12 +16,14 @@
 	$.kscroller.fn.extend = $.kscroller.extend  = $.extend;
 	$.kscroller.fn.extend({
 		init: function(el, settings){
-			var _self = this, thumb ="<div></div>" , track ="<div></div>";
+			var _self = this, thumb ="<div class='thumb'></div>" ,
+				track ="<div class='track'></div>",
+				button="<div class='button'></div>"
 			$(el).each(function(item){
-				_self.registerEvents(thumb, track);
+				_self.registerEvents(thumb, track, button);
 			});
 		},
-		registerEvents:function(thumb, track){
+		registerEvents:function(thumb, track, button){
 			$(track).bind('mouseup',this.mouseUp)
 				.bind('mousedown',this.mouseDown);
 			$(thumb).bind('dragstart',this.dragStart)
@@ -44,16 +47,15 @@
 	};
 	$.kscroller.settings = {
 		'type': 'default',
-		'roundedCorner' : 'yes',
+		'roundedCorner' : 'default',
 		'trackWidth' : 'default',
 		'trackColor' : 'default',
 		'thumbWidth' : 'default',
 		'thumbColor' : 'default',
-		'gradient': 'no',
-		'button': 'no',
-		'direction' : 'vertical',
-		'trackBorder' : 'yes',
-		'trackBorderWidth': '5px',
-		'trackBorderColor' : 'black'
+		'button': 'default',
+		'direction' : 'default',
+		'trackBorder' : 'default',
+		'trackBorderWidth': 'default',
+		'trackBorderColor' : 'default'
 	};
 })(JQuery)
